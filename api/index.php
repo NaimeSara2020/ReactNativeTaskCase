@@ -17,7 +17,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {  
     case 'GET':  
-        // Eğer ID parametresi varsa, sadece o öğrenciyi getir
         if (isset($_GET['id'])) {
             $id = $conn->real_escape_string($_GET['id']);
             $result = $conn->query("SELECT * FROM students WHERE id = $id");
@@ -29,7 +28,6 @@ switch ($method) {
                 echo json_encode(["error" => "Student not found"]);
             }
         } else {
-            // Tüm öğrencileri listele
             $result = $conn->query("SELECT * FROM students");  
             $students = [];  
 
